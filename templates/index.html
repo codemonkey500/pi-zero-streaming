@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stream Control</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			width: 100vw;
+    		height: 100vh;
+		}
+		.stream {
+			max-width: 100%;
+			width: 1280;
+			height: 720;
+		}
+		.center {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		h1 {
+			text-align: center;
+		}
+		h3 {
+			text-align: center;
+		}
+	</style>
+</head>
+<body onLoad="getData()">
+	<h1>Stats</h1>
+	<h3 id="piTemp"></h3>
+	<script>
+		function getData(){
+			$('#piTemp').load('./temperature.txt');
+		}
+		// run every minute
+		setInterval(getData, 60000)
+	</script>
+    <br>
+    <button onClick="location.href='http://192.168.178.49:5000/cameras.html'" type="button">Click Here</button>
+</body>
+</html>
+		
+
