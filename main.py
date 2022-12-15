@@ -8,9 +8,8 @@ import os
 import json
 import subprocess
 
-# host = '10.200.0.2'
-# host = '192.168.178.49'
-host = '0.0.0.0'
+#host = '0.0.0.0'
+host = '10.200.0.2'
 port = 5000
 
 class StreamingOutput(object):
