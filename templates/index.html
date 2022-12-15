@@ -46,6 +46,7 @@
 				if (this.readyState == 4 && this.status == 200) {
 					//Use parse() method to convert JSON string to JSON object
 					var responseJsonObj = JSON.parse(this.responseText);
+					$('#piTemp').html('');
 					$('#piTemp').append(responseJsonObj.temp).append(" &deg;C");
 				}			
 			};
