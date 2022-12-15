@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Stream Control</title>
+	<title>Raspberry Pi - Live Stream</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<style>
@@ -30,6 +30,11 @@
 	</style>
 </head>
 <body onLoad="getData()">
+	<h1>Eingangsbereich</h1>
+	<img class="stream center" src="stream.mjpg">
+	<!--<br>-->
+	<!--Add another stream-->
+	<!--<img class="stream center" src="http://X.X.X.X:YYYY/stream.mjpg">-->
 	<h1>Stats</h1>
 	<h3 id="piTemp"></h3>
 	<script>
@@ -39,8 +44,6 @@
 		// run every minute
 		setInterval(getData, 60000)
 	</script>
-    <br>
-    <button onClick="location.href='http://192.168.178.49:5000/cameras.html'" type="button">Click Here</button>
 </body>
 </html>
 		
