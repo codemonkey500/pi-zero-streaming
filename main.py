@@ -52,12 +52,13 @@ class StreamingHandler(BaseHTTPRequestHandler):
         elif self.path == '/stats':
             temp = subprocess.check_output('vcgencmd measure_temp | sed -e "s/temp=//" -e "s/\'C//" | xargs echo -n', shell=True)
             out = {}
-            out["temp"] = f"{temp.decode('utf-8')} 'C"
+            out["temp"] = temp.decode('utf-8')
+            content = json.dumps(out).encode('utf-8')
             self.send_response(200)
             self.send_header('Content-Type', 'application/json')
             self.send_header('Content-Length', len(content))
             self.end_headers()
-            self.wfile.write(json.dumps(content))
+            self.wfile.write(content)
         elif self.path == '/stream.mjpg':
             self.send_response(200)
             self.send_header('Age', 0)

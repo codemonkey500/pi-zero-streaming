@@ -29,20 +29,36 @@
 		}
 	</style>
 </head>
-<body onLoad="getData()">
-	<h1>Eingangsbereich</h1>
+<body onLoad="getStats()">
+	<h1>Entrance</h1>
 	<img class="stream center" src="stream.mjpg">
 	<!--<br>-->
 	<!--Add another stream-->
 	<!--<img class="stream center" src="http://X.X.X.X:YYYY/stream.mjpg">-->
 	<h1>Stats</h1>
-	<h3 id="piTemp"></h3>
+	<h3 id="piTemp">Pi 1 CPU: </h3>
 	<script>
-		function getData(){
-			$('#piTemp').load('./temperature.txt');
+		function getStats(){
+
+			const xmlhttp = new XMLHttpRequest();
+
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					//Use parse() method to convert JSON string to JSON object
+					var responseJsonObj = JSON.parse(this.responseText);
+					$('#piTemp').append(responseJsonObj.temp).append(" &deg;C");
+				}
+				
+			};
+
+			xmlhttp.open("GET", "/stats", true);
+			xmlhttp.send();
+
+
+			
 		}
-		// run every minute
-		setInterval(getData, 60000)
+		// run every 30 seconds
+		setInterval(getStats, 30000)
 	</script>
 </body>
 </html>
