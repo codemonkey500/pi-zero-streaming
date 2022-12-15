@@ -36,7 +36,7 @@
 	<!--Add another stream-->
 	<!--<img class="stream center" src="http://X.X.X.X:YYYY/stream.mjpg">-->
 	<h1>Stats</h1>
-	<h3 id="piTemp">Pi 1 CPU: </h3>
+	<h3 id="piTemp"></h3>
 	<script>
 		function getStats(){
 
@@ -46,7 +46,7 @@
 				if (this.readyState == 4 && this.status == 200) {
 					//Use parse() method to convert JSON string to JSON object
 					var responseJsonObj = JSON.parse(this.responseText);
-					$('#piTemp').html('');
+					$('#piTemp').html('Pi 1 CPU: ');
 					$('#piTemp').append(responseJsonObj.temp).append(" &deg;C");
 				}			
 			};
